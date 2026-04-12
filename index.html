@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dawid Bobyla — Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0f0f0f;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0;
+            border-bottom: 1px solid #222;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        header h2 {
+            font-size: 1.2rem;
+            color: #00bfff;
+            font-weight: 400;
+            margin-bottom: 6px;
+        }
+
+        header p {
+            font-size: 0.95rem;
+            color: #888;
+        }
+
+        section {
+            padding: 50px 0;
+            border-bottom: 1px solid #222;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            color: #00bfff;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 14px;
+            color: #ccc;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+            color: #ccc;
+        }
+
+        ul li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #00bfff;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 24px 0;
+            border-radius: 6px;
+            background: #1a1a1a;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 6px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #666;
+            font-size: 0.85rem;
+            border-top: 1px solid #222;
+        }
+
+        footer a {
+            color: #00bfff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header h2 {
+                font-size: 1rem;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+            }
+
+            .container {
+                padding: 20px 16px;
+            }
+
+            header {
+                padding: 40px 0;
+            }
+
+            section {
+                padding: 36px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Dawid Bobyla</h1>
+            <h2>Lead Unreal Engine Developer</h2>
+            <p>UE5 | Multiplayer | Gameplay Systems</p>
+        </header>
+
+        <section>
+            <h3>Storage Hunter Simulator</h3>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+            </div>
+            <ul>
+                <li>Gameplay systems (C++ &amp; Blueprints)</li>
+                <li>Multiplayer (4-player co-op)</li>
+                <li>UI (UMG)</li>
+                <li>Migration from Unity to Unreal Engine 5</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Chernobyl Liquidators</h3>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+            </div>
+            <p>Sole programmer during demo production</p>
+            <ul>
+                <li>Ladder system</li>
+                <li>Fire extinguishing system</li>
+                <li>Cleaning system</li>
+                <li>Tutorial system</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Build Pipeline &amp; CI/CD</h3>
+            <ul>
+                <li>Unity build automation (menu + CLI)</li>
+                <li>Jenkins and GitLab CI integration</li>
+                <li>Git-based versioning</li>
+                <li>Automated build packaging</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Other Projects</h3>
+            <ul>
+                <li>Multi-device system (32 players, UDP, DMX hardware integration)</li>
+                <li>Mobile games (1M+ downloads)</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>
+                <a href="https://www.linkedin.com/in/dawidbobyla">LinkedIn</a>
+                &nbsp;&middot;&nbsp;
+                <a href="mailto:dawidbobyla@gmail.com">Email</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
