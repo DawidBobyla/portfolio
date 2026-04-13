@@ -15,7 +15,7 @@
             background-color: #0f0f0f;
             color: #e0e0e0;
             font-family: 'Segoe UI', Arial, sans-serif;
-            line-height: 1.6;
+            line-height: 1.75;
         }
 
         .container {
@@ -26,30 +26,32 @@
 
         header {
             text-align: center;
-            padding: 60px 0;
+            padding: 70px 0;
             border-bottom: 1px solid #222;
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             color: #fff;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
         }
 
         header h2 {
             font-size: 1.2rem;
             color: #00bfff;
             font-weight: 400;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         header p {
             font-size: 0.95rem;
             color: #888;
+            letter-spacing: 1px;
         }
 
         section {
-            padding: 50px 0;
+            padding: 60px 0;
             border-bottom: 1px solid #222;
         }
 
@@ -60,22 +62,31 @@
         h3 {
             font-size: 1.6rem;
             color: #00bfff;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+        }
+
+        h4 {
+            font-size: 1.15rem;
+            color: #fff;
+            margin-top: 36px;
+            margin-bottom: 14px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #1e1e1e;
         }
 
         p {
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             color: #ccc;
         }
 
         ul {
             list-style: none;
             padding: 0;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         ul li {
-            padding: 6px 0;
+            padding: 7px 0;
             padding-left: 20px;
             position: relative;
             color: #ccc;
@@ -88,12 +99,18 @@
             color: #00bfff;
         }
 
+        .result-text {
+            color: #888;
+            font-style: italic;
+            margin-top: 8px;
+        }
+
         .video-wrapper {
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            margin: 24px 0;
+            margin: 28px 0;
             border-radius: 6px;
             background: #1a1a1a;
         }
@@ -110,7 +127,7 @@
 
         footer {
             text-align: center;
-            padding: 40px 0;
+            padding: 50px 0;
             color: #666;
             font-size: 0.85rem;
             border-top: 1px solid #222;
@@ -138,6 +155,10 @@
                 font-size: 1.3rem;
             }
 
+            h4 {
+                font-size: 1.05rem;
+            }
+
             .container {
                 padding: 20px 16px;
             }
@@ -147,7 +168,7 @@
             }
 
             section {
-                padding: 36px 0;
+                padding: 42px 0;
             }
         }
     </style>
@@ -171,10 +192,30 @@
                 <li>UI (UMG)</li>
                 <li>Migration from Unity to Unreal Engine 5</li>
             </ul>
+
+            <h4>Results</h4>
+            <ul>
+                <li>520,000+ store page views (Steam Next Fest)</li>
+                <li>67,000 players reached</li>
+                <li>300k+ copies sold</li>
+                <li>80%+ positive reviews</li>
+            </ul>
+
+            <h4>Case Study: Inventory &amp; Warehouse System</h4>
+            <p>Designed a scalable storage system supporting multiple warehouse types.</p>
+            <ul>
+                <li>Base Warehouse class with derived implementations</li>
+                <li>InventoryComponent for data storage</li>
+                <li>InventoryInterface for abstraction</li>
+            </ul>
+            <p class="result-text">Reusable, decoupled system used across multiple gameplay features.</p>
         </section>
 
         <section>
             <h3>Chernobyl Liquidators</h3>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+            </div>
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
             </div>
@@ -198,10 +239,15 @@
         </section>
 
         <section>
-            <h3>Other Projects</h3>
+            <h3>Experimental Systems</h3>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+            </div>
+            <p>Interactive multi-device system:</p>
             <ul>
-                <li>Multi-device system (32 players, UDP, DMX hardware integration)</li>
-                <li>Mobile games (1M+ downloads)</li>
+                <li>32 players</li>
+                <li>UDP communication</li>
+                <li>DMX hardware (wind, smoke, motion seats)</li>
             </ul>
         </section>
 
