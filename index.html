@@ -105,24 +105,53 @@
             margin-top: 8px;
         }
 
-        .video-wrapper {
+        .video-thumb {
+            display: block;
             position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
             margin: 28px 0;
             border-radius: 6px;
+            overflow: hidden;
             background: #1a1a1a;
         }
 
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .video-thumb img {
             width: 100%;
-            height: 100%;
-            border: none;
+            display: block;
             border-radius: 6px;
+            opacity: 0.85;
+            transition: opacity 0.2s;
+        }
+
+        .video-thumb:hover img {
+            opacity: 1;
+        }
+
+        .video-thumb .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 68px;
+            height: 48px;
+            background: rgba(0, 0, 0, 0.75);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-thumb .play-btn::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 0 10px 18px;
+            border-color: transparent transparent transparent #fff;
+        }
+
+        .video-thumb:hover .play-btn {
+            background: rgba(255, 0, 0, 0.85);
         }
 
         footer {
@@ -183,9 +212,10 @@
 
         <section>
             <h3>Storage Hunter Simulator</h3>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/B72C_k7ZJwc" allowfullscreen></iframe>
-            </div>
+            <a class="video-thumb" href="https://www.youtube.com/watch?v=B72C_k7ZJwc" target="_blank" rel="noopener">
+                <img src="https://img.youtube.com/vi/B72C_k7ZJwc/maxresdefault.jpg" alt="Storage Hunter Simulator Trailer">
+                <span class="play-btn"></span>
+            </a>
             <ul>
                 <li>Gameplay systems (C++ &amp; Blueprints)</li>
                 <li>Multiplayer (4-player co-op)</li>
@@ -217,9 +247,10 @@
 
         <section>
             <h3>Chernobyl Liquidators</h3>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/7-hZ6UnNhF4" allowfullscreen></iframe>
-            </div>
+            <a class="video-thumb" href="https://www.youtube.com/watch?v=7-hZ6UnNhF4" target="_blank" rel="noopener">
+                <img src="https://img.youtube.com/vi/7-hZ6UnNhF4/maxresdefault.jpg" alt="Chernobyl Liquidators Trailer">
+                <span class="play-btn"></span>
+            </a>
             <p>Sole programmer during demo production</p>
             <ul>
                 <li>Ladder system</li>
@@ -241,9 +272,10 @@
 
         <section>
             <h3>Experimental Systems</h3>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/iDz3vQRIf90" allowfullscreen></iframe>
-            </div>
+            <a class="video-thumb" href="https://www.youtube.com/watch?v=iDz3vQRIf90" target="_blank" rel="noopener">
+                <img src="https://img.youtube.com/vi/iDz3vQRIf90/maxresdefault.jpg" alt="360 FX - Experimental System">
+                <span class="play-btn"></span>
+            </a>
             <p>Interactive multi-device system:</p>
             <ul>
                 <li>32 players</li>
