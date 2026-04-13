@@ -1,276 +1,200 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dawid Bobyla — Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<title>Dawid Bobyla Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            background-color: #0f0f0f;
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            line-height: 1.75;
-        }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f0f0f;
+  color: #ffffff;
+  line-height: 1.6;
+}
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
 
-        header {
-            text-align: center;
-            padding: 70px 0;
-            border-bottom: 1px solid #222;
-        }
+h1 {
+  color: #ffffff;
+}
 
-        header h1 {
-            font-size: 2.6rem;
-            color: #fff;
-            margin-bottom: 10px;
-            letter-spacing: 0.5px;
-        }
+h2 {
+  color: #00bfff;
+  margin-top: 50px;
+}
 
-        header h2 {
-            font-size: 1.2rem;
-            color: #00bfff;
-            font-weight: 400;
-            margin-bottom: 8px;
-        }
+h3 {
+  margin-top: 30px;
+}
 
-        header p {
-            font-size: 0.95rem;
-            color: #888;
-            letter-spacing: 1px;
-        }
+h4 {
+  margin-top: 25px;
+}
 
-        section {
-            padding: 60px 0;
-            border-bottom: 1px solid #222;
-        }
+.section {
+  margin-bottom: 60px;
+}
 
-        section:last-of-type {
-            border-bottom: none;
-        }
+iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+  margin: 20px 0;
+}
 
-        h3 {
-            font-size: 1.6rem;
-            color: #00bfff;
-            margin-bottom: 24px;
-        }
+ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
 
-        h4 {
-            font-size: 1.15rem;
-            color: #fff;
-            margin-top: 36px;
-            margin-bottom: 14px;
-            padding-bottom: 6px;
-            border-bottom: 1px solid #1e1e1e;
-        }
+p {
+  margin-top: 10px;
+}
 
-        p {
-            margin-bottom: 16px;
-            color: #ccc;
-        }
+.footer {
+  margin-top: 60px;
+  opacity: 0.7;
+}
 
-        ul {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 24px;
-        }
+a {
+  color: #00bfff;
+  text-decoration: none;
+}
+</style>
 
-        ul li {
-            padding: 7px 0;
-            padding-left: 20px;
-            position: relative;
-            color: #ccc;
-        }
-
-        ul li::before {
-            content: "▸";
-            position: absolute;
-            left: 0;
-            color: #00bfff;
-        }
-
-        .result-text {
-            color: #888;
-            font-style: italic;
-            margin-top: 8px;
-        }
-
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            margin: 28px 0;
-            border-radius: 6px;
-            background: #1a1a1a;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 6px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 50px 0;
-            color: #666;
-            font-size: 0.85rem;
-            border-top: 1px solid #222;
-        }
-
-        footer a {
-            color: #00bfff;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
-
-            header h2 {
-                font-size: 1rem;
-            }
-
-            h3 {
-                font-size: 1.3rem;
-            }
-
-            h4 {
-                font-size: 1.05rem;
-            }
-
-            .container {
-                padding: 20px 16px;
-            }
-
-            header {
-                padding: 40px 0;
-            }
-
-            section {
-                padding: 42px 0;
-            }
-        }
-    </style>
 </head>
+
 <body>
-    <div class="container">
-        <header>
-            <h1>Dawid Bobyla</h1>
-            <h2>Lead Unreal Engine Developer</h2>
-            <p>UE5 | Multiplayer | Gameplay Systems</p>
-        </header>
 
-        <section>
-            <h3>Storage Hunter Simulator</h3>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/B72C_k7ZJwc" allowfullscreen></iframe>
-            </div>
-            <ul>
-                <li>Gameplay systems (C++ &amp; Blueprints)</li>
-                <li>Multiplayer (4-player co-op)</li>
-                <li>UI (UMG)</li>
-                <li>Migration from Unity to Unreal Engine 5</li>
-            </ul>
+<div class="container">
 
-            <h4>Steam Next Fest (Demo performance)</h4>
-            <ul>
-                <li>520,000+ store page visits</li>
-                <li>67,000 players reached during demo</li>
-            </ul>
+<h1>Dawid Bobyla</h1>
+<p><strong>Lead Unreal Engine Developer</strong></p>
+<p>UE5 | Multiplayer | Gameplay Systems</p>
+<p>10+ years of experience in game development (Unreal Engine & Unity)</p>
 
-            <h4>Results</h4>
-            <ul>
-                <li>300k+ copies sold</li>
-                <li>80%+ positive reviews</li>
-            </ul>
+<h2>Storage Hunter Simulator</h2>
 
-            <h4>Case Study: Inventory &amp; Warehouse System</h4>
-            <p>Designed a scalable storage system supporting multiple warehouse types.</p>
-            <ul>
-                <li>Base Warehouse class with derived implementations</li>
-                <li>InventoryComponent for data storage</li>
-                <li>InventoryInterface for abstraction</li>
-            </ul>
-            <p class="result-text">Reusable, decoupled system used across multiple gameplay features.</p>
-        </section>
+<p><strong>&#11088; Featured Project</strong></p>
+<p><strong>300k+ copies sold &#8226; 80%+ positive reviews</strong></p>
 
-        <section>
-            <h3>Chernobyl Liquidators</h3>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/7-hZ6UnNhF4" allowfullscreen></iframe>
-            </div>
-            <p>Sole programmer during demo production</p>
+<iframe src="https://www.youtube.com/embed/B72C_k7ZJwc"></iframe>
 
-            <h4>Ladder System</h4>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/Rb1ka_VMXrk" allowfullscreen></iframe>
-            </div>
-            <p>Smooth ladder climbing system with animation transitions.</p>
+<ul>
+<li>Designed and implemented gameplay systems (C++ &amp; Blueprints)</li>
+<li>Implemented 4-player co-op multiplayer</li>
+<li>Built UI systems using UMG</li>
+<li>Migrated project from Unity to Unreal Engine 5</li>
+</ul>
 
-            <h4>Fire System</h4>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/MyXa7wXaWFs" allowfullscreen></iframe>
-            </div>
-            <p>Interactive fire extinguishing system with gameplay feedback.</p>
+<h3>Steam Next Fest &#8211; Demo Performance</h3>
+<ul>
+<li>520,000+ store page visits</li>
+<li>67,000 players reached during demo</li>
+</ul>
 
-            <h4>Cleaning System</h4>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/YQavru8FuNM" allowfullscreen></iframe>
-            </div>
-            <p>Progressive cleaning system based on player interaction.</p>
-        </section>
+<h3>Case Study: Inventory &amp; Warehouse System</h3>
 
-        <section>
-            <h3>Build Pipeline &amp; CI/CD</h3>
-            <ul>
-                <li>Unity build automation (menu + CLI)</li>
-                <li>Jenkins and GitLab CI integration</li>
-                <li>Git-based versioning</li>
-                <li>Automated build packaging</li>
-            </ul>
-        </section>
+<p>
+The game required multiple storage types (pawnshop and player house),
+each implemented differently across the project.
+</p>
 
-        <section>
-            <h3>Experimental Systems</h3>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/iDz3vQRIf90" allowfullscreen></iframe>
-            </div>
-            <p>Interactive multi-device system:</p>
-            <ul>
-                <li>32 players</li>
-                <li>UDP communication</li>
-                <li>DMX hardware (wind, smoke, motion seats)</li>
-            </ul>
-        </section>
+<p><strong>Challenge:</strong><br>
+Unifying access to inventory data without tightly coupling systems.
+</p>
 
-        <footer>
-            <p>
-                <a href="https://www.linkedin.com/in/dawidbobyla">LinkedIn</a>
-                &nbsp;&middot;&nbsp;
-                <a href="mailto:dawidbobyla@gmail.com">Email</a>
-            </p>
-        </footer>
-    </div>
+<p><strong>Solution:</strong></p>
+<ul>
+<li>Base <b>Warehouse</b> class with derived implementations</li>
+<li><b>InventoryComponent</b> responsible for item data</li>
+<li><b>InventoryInterface</b> for consistent access</li>
+</ul>
+
+<p><strong>Key Insight:</strong><br>
+Used composition for data and inheritance for behavior,
+combined with interface-based access.
+</p>
+
+<p><strong>Result:</strong><br>
+Reusable, scalable system used across multiple gameplay features.
+</p>
+
+<h2>Chernobyl Liquidators</h2>
+
+<iframe src="https://www.youtube.com/embed/7-hZ6UnNhF4"></iframe>
+
+<p><strong>Sole programmer during demo production</strong></p>
+
+<p>
+Responsible for all gameplay systems and core technical implementation.
+</p>
+
+<h3>Gameplay Systems</h3>
+
+<h4>Ladder System</h4>
+<iframe src="https://www.youtube.com/embed/Rb1ka_VMXrk"></iframe>
+<p>Smooth ladder climbing system with animation state transitions.</p>
+
+<h4>Fire System</h4>
+<iframe src="https://www.youtube.com/embed/MyXa7wXaWFs"></iframe>
+<p>Interactive fire extinguishing system with real-time feedback.</p>
+
+<h4>Cleaning System</h4>
+<iframe src="https://www.youtube.com/embed/YQavru8FuNM"></iframe>
+<p>Progressive cleaning system driven by player interaction.</p>
+
+<h2>Build Pipeline &amp; CI/CD</h2>
+
+<p>
+Designed and implemented a unified build pipeline for both local and CI/CD environments.
+</p>
+
+<ul>
+<li>Single build system used in Unity Editor and CI pipelines</li>
+<li>Integrated with Jenkins and GitLab CI/CD</li>
+<li>Git-based versioning (date + commit hash)</li>
+<li>Automated packaging and build generation</li>
+</ul>
+
+<p>
+Additionally implemented JUnit-style error reporting to improve debugging directly from CI pipelines.
+</p>
+
+<h2>Experimental Systems</h2>
+
+<iframe src="https://www.youtube.com/embed/iDz3vQRIf90"></iframe>
+
+<p>
+Interactive multi-device system combining gameplay, networking, and physical effects.
+</p>
+
+<ul>
+<li>Supported up to 32 players using mobile devices as controllers</li>
+<li>Replaced TCP with UDP due to connection stability issues</li>
+<li>Game acted as central server for real-time communication</li>
+<li>Integrated hardware via DMX (wind, smoke, motion seats)</li>
+</ul>
+
+<p>
+Real-time synchronization between gameplay and physical effects.
+</p>
+
+<div class="footer">
+<p>
+<a href="https://www.linkedin.com/in/dawidbobyla">LinkedIn</a> &#183;
+<a href="mailto:dawidbobyla@gmail.com">Email</a>
+</p>
+</div>
+
+</div>
+
 </body>
 </html>
