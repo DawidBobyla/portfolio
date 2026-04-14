@@ -78,7 +78,7 @@ body {
 
 /* --- HERO --- */
 .hero {
-  padding: 100px 0 80px;
+  padding: 100px 0 40px;
   text-align: center;
   position: relative;
 }
@@ -304,24 +304,96 @@ strong {
   transition: border-color 0.3s;
 }
 
+/* --- TECH TAGS --- */
+.tech-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tech-tag {
+  display: inline-block;
+  font-size: 0.75em;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-strong);
+  letter-spacing: 0.5px;
+}
+
+/* --- ABOUT --- */
+.about {
+  padding: 22px 0 20px;
+  text-align: center;
+  border-top: 1px solid var(--border-section);
+}
+
+.about p {
+  max-width: 620px;
+  margin: 0 auto;
+  font-size: 1.05em;
+  color: var(--text);
+}
+
 /* --- FOOTER --- */
 .footer {
-  padding: 50px 0;
+  padding: 60px 0;
   border-top: 1px solid var(--border-section);
   text-align: center;
 }
 
-.footer a {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 400;
-  transition: color 0.2s;
-  margin: 0 16px;
+.footer-heading {
+  font-size: 1.4em;
+  color: var(--text-heading);
+  font-weight: 600;
+  margin-bottom: 8px;
 }
 
-.footer a:hover {
+.footer-sub {
+  color: var(--text-subtle);
+  margin-bottom: 28px;
+  font-size: 1em;
+}
+
+.footer-links {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-strong);
+  font-size: 0.95em;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.footer-links a:hover {
+  border-color: var(--accent);
   color: var(--accent);
+}
+
+.footer-links a.primary {
+  background: var(--accent);
+  color: #0a0a0b;
+  border-color: var(--accent);
+}
+
+.footer-links a.primary:hover {
+  filter: brightness(1.1);
+  color: #0a0a0b;
 }
 
 a {
@@ -463,16 +535,97 @@ pre code .num { color: #d19a66; }
 
 /* --- CONTROLS PANEL --- */
 #controls {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
   font-size: 16px !important;
+  font-family: 'Inter', sans-serif;
 }
 
-#controls button {
-  transition: box-shadow 0.2s, border-color 0.2s;
+#controls-toggle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(20, 20, 24, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #d1d5db;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, transform 0.3s;
 }
 
-#controls button.active {
-  box-shadow: 0 0 0 2px #00bfff;
-  border-color: #00bfff !important;
+#controls-toggle:hover {
+  background: rgba(30, 30, 36, 0.95);
+  color: #00bfff;
+}
+
+#controls.open #controls-toggle {
+  transform: rotate(45deg);
+}
+
+#controls-panel {
+  position: absolute;
+  bottom: 54px;
+  right: 0;
+  background: rgba(20, 20, 24, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 240px;
+}
+
+#controls.open #controls-panel {
+  display: flex;
+}
+
+#controls .controls-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#controls .controls-label {
+  font-size: 0.65rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 42px;
+}
+
+#controls .controls-group {
+  display: flex;
+  gap: 6px;
+}
+
+#controls .controls-group button {
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: 1px solid #3a3a42;
+  background: transparent;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+#controls .controls-group button:hover {
+  border-color: #00bfff;
+  color: #00bfff;
+}
+
+#controls .controls-group button.active {
+  border-color: #00bfff;
+  color: #00bfff;
+  background: rgba(0, 191, 255, 0.1);
 }
 
 /* --- RESPONSIVE --- */
@@ -523,10 +676,22 @@ pre code .num { color: #d19a66; }
   <div class="experience">10+ years of experience in game development</div>
 </div>
 
+<!-- ABOUT -->
+<div class="about">
+  <p>Passionate game developer who has shipped commercial titles, led teams, and built gameplay systems from scratch. Equally comfortable in Unity/C# and Unreal/C++, with a focus on clean architecture, multiplayer, and production-ready code.</p>
+</div>
+
 <!-- STORAGE HUNTER -->
 <div class="section">
   <div class="section-label">Featured Project</div>
   <h2>Storage Hunter Simulator</h2>
+  <div class="tech-tags">
+    <span class="tech-tag">Unreal Engine 5</span>
+    <span class="tech-tag">C++</span>
+    <span class="tech-tag">Blueprints</span>
+    <span class="tech-tag">Multiplayer</span>
+    <span class="tech-tag">UMG</span>
+  </div>
 
   <div class="stats">
     <div class="stat">
@@ -682,6 +847,12 @@ pre code .num { color: #d19a66; }
 <div class="section">
   <div class="section-label">Project</div>
   <h2>Chernobyl Liquidators</h2>
+  <div class="tech-tags">
+    <span class="tech-tag">Unity</span>
+    <span class="tech-tag">C#</span>
+    <span class="tech-tag">Gameplay Systems</span>
+    <span class="tech-tag">UGUI</span>
+  </div>
 
   <div class="video-container">
     <iframe src="https://www.youtube.com/embed/7-hZ6UnNhF4" allowfullscreen></iframe>
@@ -753,6 +924,12 @@ pre code .num { color: #d19a66; }
 <div class="section">
   <div class="section-label">Infrastructure</div>
   <h2>Build Pipeline &amp; CI/CD</h2>
+  <div class="tech-tags">
+    <span class="tech-tag">Unity</span>
+    <span class="tech-tag">C#</span>
+    <span class="tech-tag">Jenkins</span>
+    <span class="tech-tag">GitLab CI</span>
+  </div>
 
   <p>Designed and implemented a unified build pipeline for both local and CI/CD environments.</p>
 
@@ -868,6 +1045,12 @@ pre code .num { color: #d19a66; }
 <div class="section">
   <div class="section-label">Research &amp; Development</div>
   <h2>Experimental Systems</h2>
+  <div class="tech-tags">
+    <span class="tech-tag">Unity</span>
+    <span class="tech-tag">C#</span>
+    <span class="tech-tag">UDP Networking</span>
+    <span class="tech-tag">DMX</span>
+  </div>
 
   <div class="video-container">
     <iframe src="https://www.youtube.com/embed/iDz3vQRIf90" allowfullscreen></iframe>
@@ -887,25 +1070,41 @@ pre code .num { color: #d19a66; }
 
 <!-- FOOTER -->
 <div class="footer">
-  <a href="https://www.linkedin.com/in/dawidbobyla">LinkedIn</a>
-  <a href="mailto:dawidbobyla@gmail.com">Email</a>
-</div>
-
-</div>
-
-<!-- CONTROLS (remove before publishing) -->
-<div id="controls" style="position:fixed;bottom:24px;right:24px;background:rgba(20,20,24,0.95);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:12px 16px;display:flex;flex-direction:column;gap:10px;z-index:999;">
-  <div style="display:flex;gap:8px;align-items:center;">
-    <span style="font-size:0.65rem;color:#666;text-transform:uppercase;letter-spacing:1px;width:42px;">Theme</span>
-    <button data-group="theme" data-value="dark" onclick="setTheme('dark')" style="padding:5px 10px;border-radius:8px;border:1px solid #333;background:#0a0a0b;color:#ccc;cursor:pointer;font-size:0.7rem;font-family:Inter,sans-serif;">Dark</button>
-    <button data-group="theme" data-value="" onclick="setTheme('')" style="padding:5px 10px;border-radius:8px;border:1px solid #444;background:#1c1d24;color:#ccc;cursor:pointer;font-size:0.7rem;font-family:Inter,sans-serif;">Dim</button>
-    <button data-group="theme" data-value="light" onclick="setTheme('light')" style="padding:5px 10px;border-radius:8px;border:1px solid #ccc;background:#f5f5f7;color:#333;cursor:pointer;font-size:0.7rem;font-family:Inter,sans-serif;">Light</button>
+  <div class="footer-heading">Let&rsquo;s talk</div>
+  <div class="footer-sub">Open to Senior / Lead Unity &amp; Unreal roles</div>
+  <div class="footer-links">
+    <a class="primary" href="mailto:dawidbobyla@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/dawidbobyla" target="_blank" rel="noopener">LinkedIn</a>
   </div>
-  <div style="display:flex;gap:8px;align-items:center;">
-    <span style="font-size:0.65rem;color:#666;text-transform:uppercase;letter-spacing:1px;width:42px;">Size</span>
-    <button data-group="size" data-value="small" onclick="setSize('small')" style="padding:5px 10px;border-radius:8px;border:1px solid #444;background:transparent;color:#ccc;cursor:pointer;font-size:11px;font-family:Inter,sans-serif;">A</button>
-    <button data-group="size" data-value="" onclick="setSize('')" style="padding:5px 10px;border-radius:8px;border:1px solid #444;background:transparent;color:#ccc;cursor:pointer;font-size:13px;font-family:Inter,sans-serif;font-weight:600;">A</button>
-    <button data-group="size" data-value="large" onclick="setSize('large')" style="padding:5px 10px;border-radius:8px;border:1px solid #444;background:transparent;color:#ccc;cursor:pointer;font-size:16px;font-family:Inter,sans-serif;font-weight:700;">A</button>
+</div>
+
+</div>
+
+<!-- CONTROLS -->
+<div id="controls">
+  <button id="controls-toggle" onclick="toggleControls()" aria-label="Display settings" title="Display settings">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+    </svg>
+  </button>
+  <div id="controls-panel">
+    <div class="controls-row">
+      <span class="controls-label">Theme</span>
+      <div class="controls-group">
+        <button data-group="theme" data-value="dark" onclick="setTheme('dark')">Dark</button>
+        <button data-group="theme" data-value="" onclick="setTheme('')">Dim</button>
+        <button data-group="theme" data-value="light" onclick="setTheme('light')">Light</button>
+      </div>
+    </div>
+    <div class="controls-row">
+      <span class="controls-label">Size</span>
+      <div class="controls-group">
+        <button data-group="size" data-value="small" onclick="setSize('small')" style="font-size:11px;">A</button>
+        <button data-group="size" data-value="" onclick="setSize('')" style="font-size:13px;font-weight:600;">A</button>
+        <button data-group="size" data-value="large" onclick="setSize('large')" style="font-size:16px;font-weight:700;">A</button>
+      </div>
+    </div>
   </div>
 </div>
 <script>
@@ -921,6 +1120,9 @@ function updateActive(group, value) {
   document.querySelectorAll('#controls button[data-group="' + group + '"]').forEach(function(btn) {
     btn.classList.toggle('active', btn.getAttribute('data-value') === value);
   });
+}
+function toggleControls() {
+  document.getElementById('controls').classList.toggle('open');
 }
 document.addEventListener('DOMContentLoaded', function() {
   updateActive('theme', '');
