@@ -1,71 +1,510 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Dawid Bobyla Portfolio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 
 <style>
-body {
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f0f0f;
-  color: #ffffff;
-  line-height: 1.6;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 16px;
+  font-weight: 300;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* --- THEMES --- */
+:root {
+  --bg: #1c1d24;
+  --bg-card: #24252e;
+  --border: #33343d;
+  --border-section: #2a2b34;
+  --text: #c8cad0;
+  --text-strong: #e0e1e6;
+  --text-heading: #f0f0f3;
+  --text-muted: #7e808a;
+  --text-subtle: #9a9ca6;
+  --accent: #00bfff;
+}
+
+[data-theme="dark"] {
+  --bg: #0a0a0b;
+  --bg-card: #111114;
+  --border: #1f1f24;
+  --border-section: #1a1a1f;
+  --text: #d1d5db;
+  --text-strong: #e5e7eb;
+  --text-heading: #fff;
+  --text-muted: #6b7280;
+  --text-subtle: #9ca3af;
+  --accent: #00bfff;
+}
+
+[data-theme="light"] {
+  --bg: #f5f5f7;
+  --bg-card: #ffffff;
+  --border: #e0e0e4;
+  --border-section: #d8d8dc;
+  --text: #3a3a42;
+  --text-strong: #1a1a22;
+  --text-heading: #111118;
+  --text-muted: #8a8a96;
+  --text-subtle: #6a6a76;
+  --accent: #0090cc;
+}
+
+::selection {
+  background: var(--accent);
+  color: #000;
 }
 
 .container {
-  max-width: 900px;
+  max-width: 860px;
   margin: auto;
-  padding: 20px;
+  padding: 0 24px;
 }
 
-h1 {
-  color: #ffffff;
+/* --- HERO --- */
+.hero {
+  padding: 100px 0 80px;
+  text-align: center;
+  position: relative;
 }
 
-h2 {
-  color: #00bfff;
-  margin-top: 50px;
+.hero::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--accent);
+  margin: 40px auto 0;
 }
 
-h3 {
-  margin-top: 30px;
+.hero h1 {
+  font-size: 2.8em;
+  font-weight: 700;
+  color: var(--text-heading);
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
 }
 
-h4 {
-  margin-top: 25px;
+.hero .role {
+  font-size: 1.4em;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 10px;
 }
 
+.hero .tags {
+  font-size: 1em;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.hero .experience {
+  font-size: 1.05em;
+  color: var(--text-subtle);
+  margin-top: 16px;
+}
+
+/* --- SECTIONS --- */
 .section {
-  margin-bottom: 60px;
+  padding: 70px 0;
+  border-top: 1px solid var(--border-section);
 }
 
-iframe {
+.section-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 12px;
+  background: rgba(0, 191, 255, 0.08);
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 191, 255, 0.15);
+}
+
+.section h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin-bottom: 24px;
+  letter-spacing: -0.3px;
+}
+
+.section h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-strong);
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+
+.section h4 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--accent);
+  margin-top: 36px;
+  margin-bottom: 12px;
+}
+
+/* --- STATS --- */
+.stats {
+  display: flex;
+  gap: 32px;
+  margin: 20px 0 28px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 28px;
+  flex: 1;
+  min-width: 180px;
+  text-align: center;
+}
+
+.stat .number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  display: block;
+}
+
+.stat .label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+/* --- VIDEO --- */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin: 24px 0;
+  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 400px;
+  height: 100%;
   border: none;
-  margin: 20px 0;
+  border-radius: 12px;
 }
 
+/* --- LISTS --- */
 ul {
-  padding-left: 20px;
-  margin-top: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 20px;
 }
 
+ul li {
+  padding: 8px 0 8px 24px;
+  position: relative;
+  color: var(--text);
+}
+
+ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 16px;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+/* --- CARDS --- */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin: 24px 0;
+}
+
+.card p {
+  margin-top: 8px;
+}
+
+.card strong {
+  color: var(--text-strong);
+}
+
+.card b {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* --- BADGE --- */
+.badge {
+  display: inline-block;
+  background: rgba(0, 191, 255, 0.1);
+  border: 1px solid rgba(0, 191, 255, 0.2);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+/* --- PARAGRAPHS --- */
 p {
-  margin-top: 10px;
+  margin-top: 12px;
+  color: var(--text);
 }
 
+strong {
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+/* --- SYSTEM BLOCK --- */
+.system-block {
+  border-left: 2px solid var(--border);
+  padding-left: 24px;
+  margin: 32px 0;
+}
+
+.system-block:hover {
+  border-left-color: var(--accent);
+  transition: border-color 0.3s;
+}
+
+/* --- FOOTER --- */
 .footer {
-  margin-top: 60px;
-  opacity: 0.7;
+  padding: 50px 0;
+  border-top: 1px solid var(--border-section);
+  text-align: center;
+}
+
+.footer a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 400;
+  transition: color 0.2s;
+  margin: 0 16px;
+}
+
+.footer a:hover {
+  color: var(--accent);
 }
 
 a {
-  color: #00bfff;
+  color: var(--accent);
   text-decoration: none;
+}
+
+/* --- CLASS DIAGRAM --- */
+.class-diagram {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 32px 20px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.diagram-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.class-box {
+  background: var(--bg);
+  border: 1.5px solid var(--text-strong);
+  border-radius: 8px;
+  min-width: 220px;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+.class-box.interface {
+  border-style: dashed;
+  border-color: var(--accent);
+}
+
+.class-header {
+  padding: 10px 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.class-stereotype {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+.class-name {
+  font-size: 0.95rem;
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+.class-body {
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  color: var(--text-subtle);
+}
+
+.class-body .diamond::before {
+  content: '◆ ';
+  color: var(--accent);
+}
+
+.diagram-connector {
+  width: 2px;
+  height: 30px;
+  background: var(--text-subtle);
+  margin-bottom: 3px;
+}
+
+.diagram-connector.dashed {
+  background: repeating-linear-gradient(to bottom, var(--accent) 0 5px, transparent 5px 10px);
+}
+
+.uml-triangle {
+  display: block;
+}
+
+.diagram-stem {
+  width: 2px;
+  height: 15px;
+  background: var(--text-subtle);
+}
+
+.diagram-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 2px 0;
+}
+
+.diagram-branch {
+  width: 360px;
+  height: 30px;
+  border-left: 2px solid var(--text-subtle);
+  border-right: 2px solid var(--text-subtle);
+  border-top: 2px solid var(--text-subtle);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  margin-bottom: 6px;
+}
+
+/* --- CODE BLOCKS --- */
+pre {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 16px 0 12px;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+
+code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.85em;
+  color: var(--text);
+}
+
+pre code .kw { color: #c678dd; }
+pre code .type { color: #e5c07b; }
+pre code .str { color: #98c379; }
+pre code .comment { color: #5c6370; font-style: italic; }
+pre code .func { color: #61afef; }
+pre code .num { color: #d19a66; }
+
+/* --- FONT SIZES --- */
+[data-size="small"] .container { font-size: 14px; }
+[data-size="large"] .container { font-size: 19px; }
+
+/* --- CONTROLS PANEL --- */
+#controls {
+  font-size: 16px !important;
+}
+
+#controls button {
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+#controls button.active {
+  box-shadow: 0 0 0 2px #00bfff;
+  border-color: #00bfff !important;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 640px) {
+  .hero {
+    padding: 60px 0 50px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .section {
+    padding: 50px 0;
+  }
+
+  .section h2 {
+    font-size: 1.4rem;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .system-block {
+    padding-left: 16px;
+  }
 }
 </style>
 
@@ -75,136 +514,403 @@ a {
 
 <div class="container">
 
-<h1>Dawid Bobyla</h1>
-<p><strong>Lead Unreal Engine Developer</strong></p>
-<p>UE5 | Multiplayer | Gameplay Systems</p>
-<p>10+ years of experience in game development (Unreal Engine & Unity)</p>
+<!-- HERO -->
+<div class="hero">
+  <img src="profile.jpg" alt="Dawid Bobyla" style="width:180px;height:180px;border-radius:50%;object-fit:cover;object-position:center 20%;border:3px solid var(--accent);margin-bottom:20px;">
+  <h1>Dawid Bobyla</h1>
+  <div class="role">Lead Game Developer</div>
+  <div class="tags">Unity &amp; Unreal Engine &middot; Multiplayer &middot; Gameplay Systems</div>
+  <div class="experience">10+ years of experience in game development</div>
+</div>
 
-<h2>Storage Hunter Simulator</h2>
+<!-- STORAGE HUNTER -->
+<div class="section">
+  <div class="section-label">Featured Project</div>
+  <h2>Storage Hunter Simulator</h2>
 
-<p><strong>&#11088; Featured Project</strong></p>
-<p><strong>300k+ copies sold &#8226; 80%+ positive reviews</strong></p>
+  <div class="stats">
+    <div class="stat">
+      <span class="number">300k+</span>
+      <span class="label">Copies Sold</span>
+    </div>
+    <div class="stat">
+      <span class="number">80%+</span>
+      <span class="label">Positive Reviews</span>
+    </div>
+  </div>
 
-<iframe src="https://www.youtube.com/embed/B72C_k7ZJwc"></iframe>
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/B72C_k7ZJwc" allowfullscreen></iframe>
+  </div>
 
-<ul>
-<li>Designed and implemented gameplay systems (C++ &amp; Blueprints)</li>
-<li>Implemented 4-player co-op multiplayer</li>
-<li>Built UI systems using UMG</li>
-<li>Migrated project from Unity to Unreal Engine 5</li>
-</ul>
+  <ul>
+    <li>Designed and implemented gameplay systems (C++ &amp; Blueprints)</li>
+    <li>Implemented 4-player co-op multiplayer</li>
+    <li>Built UI systems using UMG</li>
+    <li>Migrated project from Unity to Unreal Engine 5</li>
+  </ul>
 
-<h3>Steam Next Fest &#8211; Demo Performance</h3>
-<ul>
-<li>520,000+ store page visits</li>
-<li>67,000 players reached during demo</li>
-</ul>
+  <h3>Steam Next Fest &mdash; Demo Performance</h3>
+  <div class="stats">
+    <div class="stat">
+      <span class="number">520k+</span>
+      <span class="label">Store Page Visits</span>
+    </div>
+    <div class="stat">
+      <span class="number">67k</span>
+      <span class="label">Players During Demo</span>
+    </div>
+  </div>
 
-<h3>Case Study: Inventory &amp; Warehouse System</h3>
+  <h3>Case Study: Inventory &amp; Warehouse System</h3>
 
-<p>
-The game required multiple storage types (pawnshop and player house),
-each implemented differently across the project.
-</p>
+  <div class="card">
+    <p>The game required multiple storage types (pawnshop and player house), each implemented differently across the project.</p>
 
-<p><strong>Challenge:</strong><br>
-Unifying access to inventory data without tightly coupling systems.
-</p>
+    <p><strong>Challenge:</strong><br>
+    Unifying access to inventory data without tightly coupling systems.</p>
 
-<p><strong>Solution:</strong></p>
-<ul>
-<li>Base <b>Warehouse</b> class with derived implementations</li>
-<li><b>InventoryComponent</b> responsible for item data</li>
-<li><b>InventoryInterface</b> for consistent access</li>
-</ul>
+    <p><strong>Solution:</strong></p>
+    <ul>
+      <li>Base <b>AWarehouse</b> class with derived implementations</li>
+      <li><b>UInventoryComponent</b> attached to derived warehouses for item data</li>
+      <li><b>IInventoryInterface</b> for consistent access</li>
+    </ul>
 
-<p><strong>Key Insight:</strong><br>
-Used composition for data and inheritance for behavior,
-combined with interface-based access.
-</p>
+    <p><strong>Key Insight:</strong><br>
+    Used composition for data and inheritance for behavior, combined with interface-based access.</p>
 
-<p><strong>Result:</strong><br>
-Reusable, scalable system used across multiple gameplay features.
-</p>
+    <div class="class-diagram">
+      <!-- Interface -->
+      <div class="class-box interface">
+        <div class="class-header">
+          <span class="class-stereotype">&lt;&lt;interface&gt;&gt;</span>
+          <span class="class-name">IInventoryInterface</span>
+        </div>
+      </div>
 
-<h2>Chernobyl Liquidators</h2>
+      <!-- Hollow triangle pointing up (to interface) -->
+      <svg class="uml-triangle" style="color:var(--accent);margin-top:2px;" viewBox="0 0 16 14" width="16" height="14">
+        <polygon points="8,0 0,14 16,14" fill="var(--bg-card)" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
 
-<iframe src="https://www.youtube.com/embed/7-hZ6UnNhF4"></iframe>
+      <div class="diagram-connector dashed"></div>
 
-<p><strong>Sole programmer during demo production</strong></p>
+      <!-- Base class -->
+      <div class="class-box">
+        <div class="class-header">
+          <span class="class-name">AWarehouse</span>
+        </div>
+      </div>
 
-<p>
-Responsible for all gameplay systems and core technical implementation.
-</p>
+      <!-- Hollow triangle pointing up (to parent AWarehouse) -->
+      <svg class="uml-triangle" style="color:var(--text-subtle);margin-top:3px;" viewBox="0 0 16 14" width="16" height="14">
+        <polygon points="8,0 0,14 16,14" fill="var(--bg-card)" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
 
-<h3>Gameplay Systems</h3>
+      <div class="diagram-stem"></div>
 
-<h4>Ladder System</h4>
-<iframe src="https://www.youtube.com/embed/Rb1ka_VMXrk"></iframe>
-<p>Implemented ladder interaction system in first-person perspective:</p>
-<ul>
-<li>Disabled active tools while climbing to prevent gameplay conflicts</li>
-<li>Handled player interaction and state transitions</li>
-<li>Implemented jumping between ladders</li>
-</ul>
+      <div class="diagram-branch"></div>
 
-<h4>Fire System</h4>
-<iframe src="https://www.youtube.com/embed/MyXa7wXaWFs"></iframe>
-<ul>
-<li>Implemented fire extinguishing system with resource-based gameplay (water management)</li>
-<li>Added dynamic UI feedback based on player distance and interaction (safe / danger states)</li>
-<li>Integrated damage system with fire proximity and equipment (gas mask reducing damage)</li>
-<li>Implemented adjustable hose pressure affecting range and water consumption</li>
-</ul>
+      <!-- Derived classes -->
+      <div class="diagram-row">
+        <div class="class-box">
+          <div class="class-header">
+            <span class="class-name">APawnshopWarehouse</span>
+          </div>
+          <div class="class-body">
+            <span class="diamond">UInventoryComponent</span>
+          </div>
+        </div>
+        <div class="class-box">
+          <div class="class-header">
+            <span class="class-name">AHouseWarehouse</span>
+          </div>
+          <div class="class-body">
+            <span class="diamond">UInventoryComponent</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<h4>Cleaning System</h4>
-<iframe src="https://www.youtube.com/embed/YQavru8FuNM"></iframe>
-<p>Progressive cleaning system driven by player interaction.</p>
+    <p><strong>Result:</strong><br>
+    Reusable, scalable system used across multiple gameplay features.</p>
+  </div>
 
-<h2>Build Pipeline &amp; CI/CD</h2>
+  <h3>Case Study: Multiplayer &amp; UI Optimization</h3>
 
-<p>
-Designed and implemented a unified build pipeline for both local and CI/CD environments.
-</p>
+  <div class="card">
+    <p>Scaling the game to multiple locations exposed performance issues in network replication.</p>
 
-<ul>
-<li>Single build system used in Unity Editor and CI pipelines</li>
-<li>Integrated with Jenkins and GitLab CI/CD</li>
-<li>Git-based versioning (date + commit hash)</li>
-<li>Automated packaging and build generation</li>
-</ul>
+    <p><strong>Problem:</strong><br>
+    Each PriceTag actor replicated independently, causing high network load and performance drops when multiple pawnshops were introduced.</p>
 
-<p>
-Additionally implemented JUnit-style error reporting to improve debugging directly from CI pipelines.
-</p>
+    <p><strong>Solution:</strong></p>
+    <ul>
+      <li>Removed replication from individual PriceTag actors</li>
+      <li>Introduced central actor replicating array of prices</li>
+      <li>Updated UI client-side based on replicated data</li>
+      <li>Disabled world-space UI updates when player was far away (tick optimization)</li>
+    </ul>
 
-<h2>Experimental Systems</h2>
+    <p><strong>Result:</strong><br>
+    Significantly reduced network traffic and eliminated performance issues when scaling the number of objects.</p>
+  </div>
 
-<iframe src="https://www.youtube.com/embed/iDz3vQRIf90"></iframe>
+  <h3>Case Study: Multiplayer Integration</h3>
 
-<p>
-Interactive multi-device system combining gameplay, networking, and physical effects.
-</p>
+  <div class="card">
+    <p>The project was originally designed as a single-player experience and later expanded to support multiplayer.</p>
 
-<ul>
-<li>Supported up to 32 players using mobile devices as controllers</li>
-<li>Replaced TCP with UDP due to connection stability issues</li>
-<li>Game acted as central server for real-time communication</li>
-<li>Integrated hardware via DMX (wind, smoke, motion seats)</li>
-</ul>
+    <p><strong>Challenge:</strong><br>
+    Adapt existing gameplay systems to multiplayer without rewriting them from scratch.</p>
 
-<p>
-Real-time synchronization between gameplay and physical effects.
-</p>
+    <p><strong>Solution:</strong></p>
+    <ul>
+      <li>Implemented listen-server architecture (peer-to-host model)</li>
+      <li>Converted gameplay systems to server-authoritative logic</li>
+      <li>Introduced replication for critical gameplay data and interactions</li>
+      <li>Adjusted UI and player interactions to work in multiplayer context</li>
+    </ul>
 
+    <p><strong>Result:</strong><br>
+    Enabled stable 4-player co-op gameplay while preserving existing systems and minimizing refactor cost.</p>
+  </div>
+</div>
+
+<!-- CHERNOBYL -->
+<div class="section">
+  <div class="section-label">Project</div>
+  <h2>Chernobyl Liquidators</h2>
+
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/7-hZ6UnNhF4" allowfullscreen></iframe>
+  </div>
+
+  <p><strong>Sole programmer during demo production</strong></p>
+  <p>Responsible for all gameplay systems and core technical implementation.</p>
+
+  <h3>Gameplay Systems</h3>
+
+  <div class="system-block">
+    <h4>Ladder System</h4>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/Rb1ka_VMXrk" allowfullscreen></iframe>
+    </div>
+    <p>Implemented ladder interaction system in first-person perspective:</p>
+    <ul>
+      <li>Disabled active tools while climbing to prevent gameplay conflicts</li>
+      <li>Handled player interaction and state transitions</li>
+      <li>Implemented jumping between ladders</li>
+    </ul>
+  </div>
+
+  <div class="system-block">
+    <h4>Fire System</h4>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/MyXa7wXaWFs" allowfullscreen></iframe>
+    </div>
+    <ul>
+      <li>Implemented fire extinguishing system with resource-based gameplay (water management)</li>
+      <li>Added dynamic UI feedback based on player distance and interaction (safe / danger states)</li>
+      <li>Integrated damage system with fire proximity and equipment (gas mask reducing damage)</li>
+      <li>Implemented adjustable hose pressure affecting range and water consumption</li>
+    </ul>
+  </div>
+
+  <div class="system-block">
+    <h4>Cleaning System</h4>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/YQavru8FuNM" allowfullscreen></iframe>
+    </div>
+    <ul>
+      <li>Implemented cleaning tool using raycast-based interaction with distance-based area scaling</li>
+      <li>Added contextual audio feedback depending on interaction state (air / surface / dirt)</li>
+      <li>Simulated cleaning area using dynamically scaled sphere to match brush coverage</li>
+      <li>Optimized dirt detection by replacing per-pixel checks with lightweight point-based representation</li>
+    </ul>
+    <p>Instead of processing full texture pixel data, dirt was represented using generated points, significantly reducing computational cost while maintaining visual accuracy.</p>
+  </div>
+</div>
+
+<!-- CI/CD -->
+<div class="section">
+  <div class="section-label">Infrastructure</div>
+  <h2>Build Pipeline &amp; CI/CD</h2>
+
+  <p>Designed and implemented a unified build pipeline for both local and CI/CD environments.</p>
+
+  <ul>
+    <li>Single build system used in Unity Editor and CI pipelines</li>
+    <li>Integrated with Jenkins and GitLab CI/CD</li>
+    <li>Git-based versioning (date + commit hash)</li>
+    <li>Automated packaging and build generation</li>
+  </ul>
+
+  <p>Additionally implemented JUnit-style error reporting to improve debugging directly from CI pipelines.</p>
+
+  <h3>Code Examples</h3>
+
+  <h4>Automated Build Execution</h4>
+  <p>Core method used to build the game using Unity BuildPipeline:</p>
+<pre><code><span class="kw">private static void</span> <span class="func">BuildGame</span>(<span class="type">BuildOptions</span> buildOptions, <span class="type">BuildType</span> buildType, <span class="kw">bool</span> buildAddressables = <span class="kw">true</span>)
+{
+    <span class="kw">if</span> (buildAddressables)
+    {
+        <span class="func">BuildAddressables</span>();
+    }
+
+    <span class="kw">string</span> fullPath =
+        <span class="str">$"{<span class="func">GetArgBuildPath</span>()}/{Application.productName}/{<span class="func">GetBuildVersion</span>()}/{buildType}/"</span>;
+
+    <span class="type">Directory</span>.<span class="func">CreateDirectory</span>(fullPath);
+
+    <span class="kw">string</span>[] scenes = <span class="type">EditorBuildSettingsScene</span>.<span class="func">GetActiveSceneList</span>(<span class="type">EditorBuildSettings</span>.scenes);
+
+    <span class="type">BuildPlayerOptions</span> buildPlayerOptions = <span class="kw">new</span> <span class="type">BuildPlayerOptions</span>
+    {
+        scenes = scenes,
+        locationPathName = fullPath + <span class="str">$"{Application.productName}.exe"</span>,
+        target = <span class="type">EditorUserBuildSettings</span>.activeBuildTarget,
+        options = buildOptions
+    };
+
+    <span class="type">BuildReport</span> buildReport = <span class="type">BuildPipeline</span>.<span class="func">BuildPlayer</span>(buildPlayerOptions);
+
+    <span class="kw">if</span> (buildReport.summary.result != <span class="type">BuildResult</span>.Succeeded)
+    {
+        <span class="type">Directory</span>.<span class="func">Delete</span>(<span class="str">$"{<span class="func">GetArgBuildPath</span>()}/{Application.productName}/{<span class="func">GetBuildVersion</span>()}/"</span>, <span class="kw">true</span>);
+        <span class="kw">throw new</span> <span class="type">Exception</span>();
+    }
+}</code></pre>
+  <p>Handles full build execution, including addressables, output paths, and failure cleanup.</p>
+
+  <h4>Command-Line Argument Parsing</h4>
+  <p>Used to control build behavior from CI/CD pipelines:</p>
+<pre><code><span class="kw">private static string</span> <span class="func">GetArg</span>(<span class="kw">string</span> name)
+{
+    <span class="kw">var</span> args = <span class="type">Environment</span>.<span class="func">GetCommandLineArgs</span>();
+
+    <span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">0</span>; i &lt; args.Length; i++)
+    {
+        <span class="kw">if</span> (args[i] == name &amp;&amp; args.Length &gt; i + <span class="num">1</span>)
+        {
+            <span class="kw">return</span> args[i + <span class="num">1</span>];
+        }
+    }
+
+    <span class="kw">return null</span>;
+}</code></pre>
+  <p>Allows passing build parameters such as build path, type, and suffix from CI tools.</p>
+
+  <h4>Build Versioning (Git Integration)</h4>
+  <p>Build version generated from Git commit date and commit hash:</p>
+<pre><code><span class="kw">public static string</span> <span class="func">GetBuildVersion</span>()
+{
+    <span class="kw">string</span> output = <span class="func">RunGitCommand</span>(<span class="str">"log -1 --format=%cd"</span>);
+
+    <span class="kw">if</span> (<span class="type">DateTime</span>.<span class="func">TryParseExact</span>(output, <span class="str">"ddd MMM d HH:mm:ss yyyy zzz"</span>,
+        <span class="type">CultureInfo</span>.InvariantCulture, <span class="type">DateTimeStyles</span>.None, <span class="kw">out</span> <span class="type">DateTime</span> lastCommitDate))
+    {
+        <span class="kw">string</span> buildVersion = lastCommitDate.<span class="func">ToString</span>(<span class="str">"yyyy.MM.dd_HH.mm"</span>) +
+                              <span class="str">$"_{<span class="func">GetLastCommitIdShort</span>()}{<span class="func">GetArgSuffix</span>()}"</span>;
+        <span class="kw">return</span> buildVersion;
+    }
+    <span class="kw">else</span>
+    {
+        <span class="kw">string</span> buildVersion = <span class="type">DateTime</span>.Now.<span class="func">ToString</span>(<span class="str">"yyyy.MM.dd_HH.mm"</span>) +
+                              <span class="str">$"_{<span class="func">GetLastCommitIdShort</span>()}{<span class="func">GetArgSuffix</span>()}"</span>;
+        <span class="kw">return</span> buildVersion;
+    }
+}</code></pre>
+  <p>Ensures traceable builds using Git commit metadata.</p>
+
+  <h4>CI Error Reporting (JUnit)</h4>
+  <p>Custom JUnit report generation for CI pipelines:</p>
+<pre><code><span class="kw">public static void</span> <span class="func">CreateReport</span>(<span class="type">List</span>&lt;<span class="kw">string</span>&gt; errors, <span class="kw">string</span> reportName, <span class="kw">string</span> duration)
+{
+    <span class="kw">if</span> (errors.Count &gt; <span class="num">0</span>)
+    {
+        <span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">0</span>; i &lt; errors.Count; i++)
+        {
+            <span class="func">CreateReport</span>(errors[i], <span class="str">$"{reportName} Case {i + <span class="num">1</span>}"</span>, duration);
+        }
+    }
+    <span class="kw">else</span>
+    {
+        <span class="func">CreateReport</span>(<span class="str">""</span>, <span class="str">$"{reportName} Case {<span class="num">1</span>}"</span>, duration);
+    }
+}</code></pre>
+  <p>Enables CI systems (Jenkins / GitLab) to display structured build errors.</p>
+
+  <h4>Build Packaging</h4>
+<pre><code><span class="type">ZipFile</span>.<span class="func">CreateFromDirectory</span>(folderPath, zipPath, <span class="type">CompressionLevel</span>.Fastest, <span class="kw">true</span>);</code></pre>
+  <p>Automates packaging of build artifacts into distributable archives.</p>
+</div>
+
+<!-- EXPERIMENTAL -->
+<div class="section">
+  <div class="section-label">Research &amp; Development</div>
+  <h2>Experimental Systems</h2>
+
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/iDz3vQRIf90" allowfullscreen></iframe>
+  </div>
+
+  <p>Interactive multi-device system combining gameplay, networking, and physical effects.</p>
+
+  <ul>
+    <li>Supported up to 32 players using mobile devices as controllers</li>
+    <li>Replaced TCP with UDP due to connection stability issues</li>
+    <li>Game acted as central server for real-time communication</li>
+    <li>Integrated hardware via DMX (wind, smoke, motion seats)</li>
+  </ul>
+
+  <p>Real-time synchronization between gameplay and physical effects.</p>
+</div>
+
+<!-- FOOTER -->
 <div class="footer">
-<p>
-<a href="https://www.linkedin.com/in/dawidbobyla">LinkedIn</a> &#183;
-<a href="mailto:dawidbobyla@gmail.com">Email</a>
-</p>
+  <a href="https://www.linkedin.com/in/dawidbobyla">LinkedIn</a>
+  <a href="mailto:dawidbobyla@gmail.com">Email</a>
 </div>
 
 </div>
+
+<!-- CONTROLS (remove before publishing) -->
+<div id="controls" style="position:fixed;bottom:24px;right:24px;background:rgba(20,20,24,0.95);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:12px 16px;display:flex;flex-direction:column;gap:10px;z-index:999;">
+  <div style="display:flex;gap:8px;align-items:center;">
+    <span style="font-size:0.65rem;color:#666;text-transform:uppercase;letter-spacing:1px;width:42px;">Theme</span>
+    <button data-group="theme" data-value="dark" onclick="setTheme('dark')" style="padding:5px 10px;border-radius:8px;border:1px solid #333;background:#0a0a0b;color:#ccc;cursor:pointer;font-size:0.7rem;font-family:Inter,sans-serif;">Dark</button>
+    <button data-group="theme" data-value="" onclick="setTheme('')" style="padding:5px 10px;border-radius:8px;border:1px solid #444;background:#1c1d24;color:#ccc;cursor:pointer;font-size:0.7rem;font-family:Inter,sans-serif;">Dim</button>
+    <button data-group="theme" data-value="light" onclick="setTheme('light')" style="padding:5px 10px;border-radius:8px;border:1px solid #ccc;background:#f5f5f7;color:#333;cursor:pointer;font-size:0.7rem;font-family:Inter,sans-serif;">Light</button>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center;">
+    <span style="font-size:0.65rem;color:#666;text-transform:uppercase;letter-spacing:1px;width:42px;">Size</span>
+    <button data-group="size" data-value="small" onclick="setSize('small')" style="padding:5px 10px;border-radius:8px;border:1px solid #444;background:transparent;color:#ccc;cursor:pointer;font-size:11px;font-family:Inter,sans-serif;">A</button>
+    <button data-group="size" data-value="" onclick="setSize('')" style="padding:5px 10px;border-radius:8px;border:1px solid #444;background:transparent;color:#ccc;cursor:pointer;font-size:13px;font-family:Inter,sans-serif;font-weight:600;">A</button>
+    <button data-group="size" data-value="large" onclick="setSize('large')" style="padding:5px 10px;border-radius:8px;border:1px solid #444;background:transparent;color:#ccc;cursor:pointer;font-size:16px;font-family:Inter,sans-serif;font-weight:700;">A</button>
+  </div>
+</div>
+<script>
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  updateActive('theme', theme);
+}
+function setSize(size) {
+  document.documentElement.setAttribute('data-size', size);
+  updateActive('size', size);
+}
+function updateActive(group, value) {
+  document.querySelectorAll('#controls button[data-group="' + group + '"]').forEach(function(btn) {
+    btn.classList.toggle('active', btn.getAttribute('data-value') === value);
+  });
+}
+document.addEventListener('DOMContentLoaded', function() {
+  updateActive('theme', '');
+  updateActive('size', '');
+});
+</script>
 
 </body>
 </html>
