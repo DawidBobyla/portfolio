@@ -149,34 +149,76 @@ body {
   flex: 1;
 }
 
-.sidebar-contact {
-  padding-top: 12px;
-  border-top: 1px solid var(--border-section);
-  margin-top: 10px;
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+.sidebar-quick-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-section);
+}
+
+.quick-btn {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
+  gap: 8px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font-size: 0.78em;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.quick-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--bg-card);
+}
+
+.quick-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(0, 191, 255, 0.08);
+}
+
+.sidebar-section-label {
+  font-size: 0.65rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+  padding: 0 12px 6px;
 }
 
 .sidebar-contact a {
+  flex: 1;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  padding: 6px 14px;
-  border-radius: 999px;
+  padding: 7px 10px;
+  border-radius: 8px;
   border: 1px solid var(--border);
-  background: var(--bg-card);
-  color: var(--text-heading);
-  font-size: 0.75em;
-  font-weight: 600;
+  background: transparent;
+  color: var(--text);
+  font-size: 0.72em;
+  font-weight: 500;
+  letter-spacing: 0.3px;
   text-decoration: none;
-  transition: border-color 0.2s, color 0.2s;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
 
 .sidebar-contact a:hover {
   border-color: var(--accent);
   color: var(--accent);
+  background: var(--bg-card);
 }
 
 /* Scrollbar styling */
@@ -219,15 +261,7 @@ body {
   position: relative;
 }
 
-.project-link:hover {
-  background: var(--bg-card);
-}
-
-.project-link.active {
-  background: var(--bg-card);
-}
-
-.project-link.active::before {
+.project-link::before {
   content: '';
   position: absolute;
   left: -4px;
@@ -235,8 +269,25 @@ body {
   transform: translateY(-50%);
   width: 3px;
   height: 60%;
-  background: var(--accent);
+  background: transparent;
   border-radius: 3px;
+  transition: background 0.2s;
+}
+
+.project-link:hover {
+  background: var(--bg-card);
+}
+
+.project-link:hover::before {
+  background: rgba(0, 191, 255, 0.4);
+}
+
+.project-link.active {
+  background: var(--bg-card);
+}
+
+.project-link.active::before {
+  background: var(--accent);
 }
 
 .project-link-thumb {
@@ -928,18 +979,38 @@ pre code .num { color: #d19a66; }
   </div>
 
   <nav class="sidebar-nav">
-    <a class="project-link active" data-target="about">
-      <div class="project-link-thumb">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <div class="sidebar-quick-actions">
+      <a class="quick-btn active" data-target="about">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="7" r="4"/>
           <path d="M5 21v-2a7 7 0 0 1 14 0v2"/>
         </svg>
-      </div>
-      <div class="project-link-text">
-        <div class="project-link-title">About Me</div>
-        <div class="project-link-tech">10+ years experience</div>
-      </div>
-    </a>
+        About
+      </a>
+      <a class="quick-btn" href="DawidBobylaCV2026.04EN.pdf" target="_blank" rel="noopener" download>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        CV
+      </a>
+      <a class="quick-btn" href="https://www.linkedin.com/in/dawidbobyla" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+        LinkedIn
+      </a>
+      <a class="quick-btn" href="mailto:dawidbobyla@gmail.com">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        Email
+      </a>
+    </div>
+
+    <div class="sidebar-section-label">Projects</div>
 
     <a class="project-link" data-target="storage-hunter">
       <div class="project-link-thumb">
@@ -1015,10 +1086,6 @@ pre code .num { color: #d19a66; }
     </a>
   </nav>
 
-  <div class="sidebar-contact">
-    <a href="mailto:dawidbobyla@gmail.com">Email</a>
-    <a href="https://www.linkedin.com/in/dawidbobyla" target="_blank" rel="noopener">LinkedIn</a>
-  </div>
 </aside>
 
 <!-- CONTENT -->
@@ -1612,12 +1679,12 @@ document.addEventListener('DOMContentLoaded', function() {
   updateActive('size', '');
 
   // Project sidebar switching
-  document.querySelectorAll('.project-link').forEach(function(link) {
+  document.querySelectorAll('[data-target]').forEach(function(link) {
     link.addEventListener('click', function(e) {
       e.preventDefault();
       var target = link.getAttribute('data-target');
 
-      document.querySelectorAll('.project-link').forEach(function(l) {
+      document.querySelectorAll('.project-link, .quick-btn').forEach(function(l) {
         l.classList.remove('active');
       });
       document.querySelectorAll('.project-panel').forEach(function(p) {
