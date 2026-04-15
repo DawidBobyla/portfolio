@@ -15,6 +15,12 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   background: var(--bg);
@@ -23,6 +29,7 @@ body {
   font-size: 16px;
   font-weight: 300;
   transition: background 0.3s, color 0.3s;
+  overflow: hidden;
 }
 
 /* --- THEMES --- */
@@ -70,10 +77,260 @@ body {
   color: #000;
 }
 
-.container {
-  max-width: 860px;
-  margin: auto;
-  padding: 0 24px;
+/* --- DASHBOARD LAYOUT --- */
+.dashboard {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.dashboard-sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  height: 100vh;
+  border-right: 1px solid var(--border-section);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 18px 16px;
+  background: var(--bg);
+}
+
+.dashboard-content {
+  flex: 1;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 48px 56px;
+}
+
+/* Sidebar hero */
+.sidebar-hero {
+  text-align: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-section);
+  margin-bottom: 12px;
+}
+
+.sidebar-photo {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+  border: 2px solid var(--accent);
+  margin-bottom: 10px;
+}
+
+.sidebar-name {
+  font-size: 1.15em;
+  font-weight: 700;
+  color: var(--text-heading);
+  letter-spacing: -0.3px;
+  margin: 0 0 2px;
+}
+
+.sidebar-role {
+  font-size: 0.8em;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.sidebar-tags {
+  font-size: 0.65em;
+  color: var(--text-muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.sidebar-contact {
+  padding-top: 12px;
+  border-top: 1px solid var(--border-section);
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.sidebar-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-heading);
+  font-size: 0.75em;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.sidebar-contact a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Scrollbar styling */
+.dashboard-sidebar::-webkit-scrollbar,
+.dashboard-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dashboard-sidebar::-webkit-scrollbar-thumb,
+.dashboard-content::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+.dashboard-content::-webkit-scrollbar-thumb:hover {
+  background: var(--text-subtle);
+}
+
+.sidebar-heading {
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+  padding: 0 12px 12px;
+  margin-bottom: 4px;
+}
+
+.project-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.2s;
+  cursor: pointer;
+  margin-bottom: 1px;
+  position: relative;
+}
+
+.project-link:hover {
+  background: var(--bg-card);
+}
+
+.project-link.active {
+  background: var(--bg-card);
+}
+
+.project-link.active::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+.project-link-thumb {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+.project-link-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-link-text {
+  min-width: 0;
+  flex: 1;
+}
+
+.project-link-title {
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--text-heading);
+  line-height: 1.25;
+  margin-bottom: 0;
+}
+
+.project-link-tech {
+  font-size: 0.68em;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+}
+
+.projects-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.project-panel {
+  display: none;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.project-panel.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+  html, body {
+    overflow: auto;
+  }
+
+  body {
+    overflow: auto;
+  }
+
+  .dashboard {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  .dashboard-sidebar {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border-section);
+    overflow-y: visible;
+    padding: 24px 16px;
+  }
+
+  .dashboard-content {
+    height: auto;
+    overflow-y: visible;
+    padding: 24px 16px;
+  }
+
+  .sidebar-nav {
+    flex: none;
+  }
 }
 
 /* --- HERO --- */
@@ -523,8 +780,8 @@ pre code .func { color: #61afef; }
 pre code .num { color: #d19a66; }
 
 /* --- FONT SIZES --- */
-[data-size="small"] .container { font-size: 14px; }
-[data-size="large"] .container { font-size: 19px; }
+[data-size="small"] .dashboard-content { font-size: 14px; }
+[data-size="large"] .dashboard-content { font-size: 19px; }
 
 /* --- CONTROLS PANEL --- */
 #controls {
@@ -658,24 +915,139 @@ pre code .num { color: #d19a66; }
 
 <body>
 
-<div class="container">
+<div class="dashboard">
 
-<!-- HERO -->
-<div class="hero">
-  <img src="profile.jpg" alt="Dawid Bobyla" style="width:180px;height:180px;border-radius:50%;object-fit:cover;object-position:center 20%;border:3px solid var(--accent);margin-bottom:20px;">
-  <h1>Dawid Bobyla</h1>
-  <div class="role">Lead Game Developer</div>
-  <div class="tags">Unity &amp; Unreal Engine &middot; Multiplayer &middot; Gameplay Systems</div>
-  <div class="experience">10+ years of experience in game development</div>
-</div>
+<!-- SIDEBAR -->
+<aside class="dashboard-sidebar">
 
-<!-- ABOUT -->
-<div class="about">
-  <p>Passionate game developer who has shipped commercial titles, led teams, and built gameplay systems from scratch. Equally comfortable in Unity/C# and Unreal/C++, with a focus on clean architecture, multiplayer, and production-ready code.</p>
-</div>
+  <div class="sidebar-hero">
+    <img class="sidebar-photo" src="profile.jpg" alt="Dawid Bobyla">
+    <div class="sidebar-name">Dawid Bobyla</div>
+    <div class="sidebar-role">Lead Game Developer</div>
+    <div class="sidebar-tags">Unity &middot; Unreal &middot; Multiplayer</div>
+  </div>
 
-<!-- STORAGE HUNTER -->
-<div class="section">
+  <nav class="sidebar-nav">
+    <a class="project-link active" data-target="about">
+      <div class="project-link-thumb">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="7" r="4"/>
+          <path d="M5 21v-2a7 7 0 0 1 14 0v2"/>
+        </svg>
+      </div>
+      <div class="project-link-text">
+        <div class="project-link-title">About Me</div>
+        <div class="project-link-tech">10+ years experience</div>
+      </div>
+    </a>
+
+    <a class="project-link" data-target="storage-hunter">
+      <div class="project-link-thumb">
+        <img src="https://img.youtube.com/vi/B72C_k7ZJwc/mqdefault.jpg" alt="">
+      </div>
+      <div class="project-link-text">
+        <div class="project-link-title">Storage Hunter</div>
+        <div class="project-link-tech">UE5 &middot; Multiplayer</div>
+      </div>
+    </a>
+
+    <a class="project-link" data-target="chernobyl">
+      <div class="project-link-thumb">
+        <img src="https://img.youtube.com/vi/7-hZ6UnNhF4/mqdefault.jpg" alt="">
+      </div>
+      <div class="project-link-text">
+        <div class="project-link-title">Chernobyl Liquidators</div>
+        <div class="project-link-tech">Unity &middot; Gameplay</div>
+      </div>
+    </a>
+
+    <a class="project-link" data-target="turbosoccer">
+      <div class="project-link-thumb">
+        <img src="https://img.youtube.com/vi/wRCte4SoRP0/mqdefault.jpg" alt="">
+      </div>
+      <div class="project-link-text">
+        <div class="project-link-title">Turbo Soccer VR</div>
+        <div class="project-link-tech">Unity &middot; SteamVR</div>
+      </div>
+    </a>
+
+    <a class="project-link" data-target="cicd">
+      <div class="project-link-thumb">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 18 22 12 16 6"/>
+          <polyline points="8 6 2 12 8 18"/>
+        </svg>
+      </div>
+      <div class="project-link-text">
+        <div class="project-link-title">Build Pipeline</div>
+        <div class="project-link-tech">Unity &middot; CI/CD</div>
+      </div>
+    </a>
+
+    <a class="project-link" data-target="experimental">
+      <div class="project-link-thumb">
+        <img src="https://img.youtube.com/vi/iDz3vQRIf90/mqdefault.jpg" alt="">
+      </div>
+      <div class="project-link-text">
+        <div class="project-link-title">Experimental Systems</div>
+        <div class="project-link-tech">Unity &middot; R&amp;D</div>
+      </div>
+    </a>
+
+    <a class="project-link" data-target="mobile">
+      <div class="project-link-thumb">
+        <img src="https://img.youtube.com/vi/AK84bkQcdeg/mqdefault.jpg" alt="">
+      </div>
+      <div class="project-link-text">
+        <div class="project-link-title">Mobile Games</div>
+        <div class="project-link-tech">Android &middot; Java</div>
+      </div>
+    </a>
+
+    <a class="project-link" data-target="thesis">
+      <div class="project-link-thumb">
+        <img src="https://img.youtube.com/vi/oqR7cDeXjhQ/mqdefault.jpg" alt="">
+      </div>
+      <div class="project-link-text">
+        <div class="project-link-title">Pirate Multiplayer</div>
+        <div class="project-link-tech">Unity &middot; Photon</div>
+      </div>
+    </a>
+  </nav>
+
+  <div class="sidebar-contact">
+    <a href="mailto:dawidbobyla@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/dawidbobyla" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</aside>
+
+<!-- CONTENT -->
+<main class="dashboard-content">
+
+  <!-- ABOUT ME -->
+  <section id="about" class="project-panel active"><div class="section" style="padding-top:0;border-top:none;">
+    <div class="section-label">About</div>
+    <h2>About Me</h2>
+    <div class="tech-tags">
+      <span class="tech-tag">10+ years</span>
+      <span class="tech-tag">Lead roles</span>
+      <span class="tech-tag">Shipped titles</span>
+    </div>
+    <p>Passionate game developer who has shipped commercial titles, led teams, and built gameplay systems from scratch. Equally comfortable in <strong>Unity/C#</strong> and <strong>Unreal/C++</strong>, with a focus on clean architecture, multiplayer, and production-ready code.</p>
+    <p>Recently led development of Storage Hunter Simulator (UE5), released under astragon Entertainment with <strong>300k+ copies sold</strong> and <strong>80%+ positive Steam reviews</strong>. Previously shipped Chernobyl Liquidators demo (Unity) leading to a <strong>2.8M&euro;</strong> publishing deal with 505 Games.</p>
+
+    <h3>What I do best</h3>
+    <ul>
+      <li>Gameplay systems and architecture (C++ &amp; C#)</li>
+      <li>Multiplayer implementation (listen-server, replication, server-authoritative logic)</li>
+      <li>UI systems (UMG, UGUI) and performance optimization</li>
+      <li>CI/CD pipelines for Unity (Jenkins, GitLab)</li>
+      <li>Leading small teams, code reviews, mentoring</li>
+    </ul>
+  </div></section>
+
+  <!-- STORAGE HUNTER -->
+  <section id="storage-hunter" class="project-panel"><div class="section" style="padding-top:0;border-top:none;">
   <div class="section-label">Featured Project</div>
   <h2>Storage Hunter Simulator</h2>
   <div class="tech-tags">
@@ -836,8 +1208,10 @@ pre code .num { color: #d19a66; }
   </div>
 </div>
 
+</section>
+
 <!-- CHERNOBYL -->
-<div class="section">
+<section id="chernobyl" class="project-panel"><div class="section">
   <div class="section-label">Project</div>
   <h2>Chernobyl Liquidators</h2>
   <div class="tech-tags">
@@ -847,14 +1221,6 @@ pre code .num { color: #d19a66; }
     <span class="tech-tag">UGUI</span>
   </div>
 
-  <div class="video-container">
-    <iframe src="https://www.youtube.com/embed/7-hZ6UnNhF4" allowfullscreen></iframe>
-  </div>
-
-  <p><strong>Sole programmer during demo production</strong></p>
-  <p>Responsible for all gameplay systems and core technical implementation.</p>
-
-  <h3>Results</h3>
   <div class="stats">
     <div class="stat">
       <span class="number">500k+</span>
@@ -869,6 +1235,13 @@ pre code .num { color: #d19a66; }
       <span class="label">Publishing Deal (505 Games)</span>
     </div>
   </div>
+
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/7-hZ6UnNhF4" allowfullscreen></iframe>
+  </div>
+
+  <p><strong>Sole programmer during demo production</strong></p>
+  <p>Responsible for all gameplay systems and core technical implementation.</p>
 
   <h3>Gameplay Systems</h3>
 
@@ -913,8 +1286,53 @@ pre code .num { color: #d19a66; }
   </div>
 </div>
 
+</section>
+
+<!-- TURBO SOCCER VR -->
+<section id="turbosoccer" class="project-panel"><div class="section" style="padding-top:0;border-top:none;">
+  <div class="section-label">VR</div>
+  <h2>Turbo Soccer VR</h2>
+  <div class="tech-tags">
+    <span class="tech-tag">Unity</span>
+    <span class="tech-tag">C#</span>
+    <span class="tech-tag">SteamVR</span>
+    <span class="tech-tag">HTC Vive</span>
+    <span class="tech-tag">Oculus</span>
+  </div>
+
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/wRCte4SoRP0" allowfullscreen></iframe>
+  </div>
+
+  <p>Commercial VR game released on Steam, focused on physics-based football gameplay and player interaction in virtual reality.</p>
+
+  <p><a href="https://store.steampowered.com/app/828770/Turbo_Soccer_VR/" target="_blank" rel="noopener">View on Steam &rarr;</a></p>
+
+  <h3>Gameplay &amp; Systems</h3>
+  <ul>
+    <li>Implemented core gameplay systems in Unity</li>
+    <li>Developed VR player interactions and controls</li>
+    <li>Designed football mechanics (shooting, goalkeeper interactions, scoring)</li>
+    <li>Built arcade-style gameplay modes</li>
+  </ul>
+
+  <h3>VR Interaction</h3>
+  <ul>
+    <li>Implemented motion controller input (SteamVR)</li>
+    <li>Designed interactions adapted to VR environment</li>
+    <li>Handled player actions in first-person VR perspective</li>
+  </ul>
+
+  <h3>Technical Highlights</h3>
+  <ul>
+    <li>Physics-based ball interaction (Rigidbody)</li>
+    <li>Real-time gameplay feedback in VR</li>
+    <li>Performance considerations for VR gameplay</li>
+  </ul>
+</div></section>
+
 <!-- CI/CD -->
-<div class="section">
+<section id="cicd" class="project-panel"><div class="section">
   <div class="section-label">Infrastructure</div>
   <h2>Build Pipeline &amp; CI/CD</h2>
   <div class="tech-tags">
@@ -1034,8 +1452,10 @@ pre code .num { color: #d19a66; }
   <p>Automates packaging of build artifacts into distributable archives.</p>
 </div>
 
+</section>
+
 <!-- EXPERIMENTAL -->
-<div class="section">
+<section id="experimental" class="project-panel"><div class="section">
   <div class="section-label">Research &amp; Development</div>
   <h2>Experimental Systems</h2>
   <div class="tech-tags">
@@ -1052,6 +1472,7 @@ pre code .num { color: #d19a66; }
   <p>Interactive multi-device system combining gameplay, networking, and physical effects.</p>
 
   <ul>
+    <li>Rendered on a cylindrical 360&deg; screen at ~11520&times;1080 resolution</li>
     <li>Supported up to 32 players using mobile devices as controllers</li>
     <li>Replaced TCP with UDP due to connection stability issues</li>
     <li>Game acted as central server for real-time communication</li>
@@ -1059,18 +1480,88 @@ pre code .num { color: #d19a66; }
   </ul>
 
   <p>Real-time synchronization between gameplay and physical effects.</p>
-</div>
+</div></section>
 
-<!-- FOOTER -->
-<div class="footer">
-  <div class="footer-heading">Get in touch</div>
-  <div class="footer-links">
-    <a href="mailto:dawidbobyla@gmail.com">Email</a>
-    <a href="https://www.linkedin.com/in/dawidbobyla" target="_blank" rel="noopener">LinkedIn</a>
-  </div>
-</div>
+  <!-- MOBILE GAMES -->
+  <section id="mobile" class="project-panel"><div class="section" style="padding-top:0;border-top:none;">
+    <div class="section-label">Mobile</div>
+    <h2>Mobile Games &amp; Apps</h2>
+    <div class="tech-tags">
+      <span class="tech-tag">Android</span>
+      <span class="tech-tag">Java</span>
+      <span class="tech-tag">LibGDX</span>
+    </div>
 
-</div>
+    <div class="stats">
+      <div class="stat">
+        <span class="number">1M+</span>
+        <span class="label">ZRadar Downloads</span>
+      </div>
+      <div class="stat">
+        <span class="number">500k+</span>
+        <span class="label">Dragon Galaxy Warrior Downloads</span>
+      </div>
+    </div>
+
+    <p>Projects developed at <strong>Yotapps Studio (2014&ndash;2017)</strong>. Android applications and games built in Java, published on Google Play.</p>
+
+    <h3>ZRadar</h3>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/AK84bkQcdeg" allowfullscreen></iframe>
+    </div>
+    <p>Flagship application reaching over <strong>1 million downloads</strong> on Google Play.</p>
+
+    <h3>Dragon Galaxy Warrior</h3>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/vBd7f-AODh4" allowfullscreen></iframe>
+    </div>
+    <p>Action mobile game built with <strong>LibGDX</strong> (cross-platform Java game framework), reaching <strong>500k+ downloads</strong> on Google Play.</p>
+  </div></section>
+
+  <!-- THESIS PROJECT -->
+  <section id="thesis" class="project-panel"><div class="section" style="padding-top:0;border-top:none;">
+    <div class="section-label">Academic</div>
+    <h2>Pirate Multiplayer Game</h2>
+    <div class="tech-tags">
+      <span class="tech-tag">Unity</span>
+      <span class="tech-tag">C#</span>
+      <span class="tech-tag">Photon PUN</span>
+      <span class="tech-tag">Android</span>
+    </div>
+
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/oqR7cDeXjhQ" allowfullscreen></iframe>
+    </div>
+
+    <p>Real-time multiplayer mobile game developed as an engineering thesis project using Photon Unity Networking (PUN). Focused on implementing networked gameplay systems, physics-based mechanics, and mobile controls.</p>
+
+    <h3>Gameplay &amp; Systems</h3>
+    <ul>
+      <li>Real-time multiplayer using Photon Unity Networking (room-based matchmaking, state synchronization)</li>
+      <li>Ship movement with mobile joystick controls</li>
+      <li>Cannon shooting system with adjustable angle and force</li>
+      <li>Health system and gameplay interactions</li>
+    </ul>
+
+    <h3>Physics &amp; Networking</h3>
+    <ul>
+      <li>Ballistic projectile system based on physics</li>
+      <li>Trajectory visualization for aiming</li>
+      <li>Rigidbody-based movement and collisions</li>
+      <li>Synchronization of gameplay elements across clients (including water behavior)</li>
+      <li>Handling time differences between clients</li>
+    </ul>
+
+    <h3>Mobile UI</h3>
+    <ul>
+      <li>Touch-based controls (virtual joystick, buttons)</li>
+      <li>Gameplay HUD</li>
+    </ul>
+  </div></section>
+
+  </main>
+
+</div> <!-- /dashboard -->
 
 <!-- CONTROLS -->
 <div id="controls">
@@ -1119,6 +1610,27 @@ function toggleControls() {
 document.addEventListener('DOMContentLoaded', function() {
   updateActive('theme', '');
   updateActive('size', '');
+
+  // Project sidebar switching
+  document.querySelectorAll('.project-link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = link.getAttribute('data-target');
+
+      document.querySelectorAll('.project-link').forEach(function(l) {
+        l.classList.remove('active');
+      });
+      document.querySelectorAll('.project-panel').forEach(function(p) {
+        p.classList.remove('active');
+      });
+
+      link.classList.add('active');
+      var panel = document.getElementById(target);
+      if (panel) {
+        panel.classList.add('active');
+      }
+    });
+  });
 });
 </script>
 
