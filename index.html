@@ -1877,6 +1877,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // Warm up YouTube connections on hover (saves ~300-500ms on click)
+  var ytWarmed = false;
+  document.addEventListener('pointerover', function(e) {
+    if (ytWarmed) return;
+    if (!e.target.closest('.video-container .lite-btn, .video-container .lite-thumb, .video-container .lite-play')) return;
+    ytWarmed = true;
+    ['https://www.youtube.com', 'https://www.google.com', 'https://i.ytimg.com'].forEach(function(url) {
+      var link = document.createElement('link');
+      link.rel = 'preconnect';
+      link.href = url;
+      document.head.appendChild(link);
+    });
+  });
+
   // Lite YouTube embed: click thumbnail to load iframe (keep thumb until loaded)
   document.addEventListener('click', function(e) {
     var btn = e.target.closest('.lite-btn');
