@@ -582,8 +582,9 @@ body {
   overflow: hidden;
   margin: 14px 0 20px;
   border-radius: 12px;
-  background: var(--bg-card);
+  background: #000;
   border: 1px solid var(--border);
+  cursor: pointer;
 }
 
 .video-container iframe {
@@ -594,6 +595,66 @@ body {
   height: 100%;
   border: none;
   border-radius: 12px;
+}
+
+.video-container img.lite-thumb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: opacity 0.15s;
+}
+
+.video-container:hover img.lite-thumb {
+  opacity: 0.85;
+}
+
+.video-container .lite-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 68px;
+  height: 48px;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 14px;
+  z-index: 1;
+  pointer-events: none;
+  transition: background 0.2s;
+}
+
+.video-container:hover .lite-play {
+  background: #ff0000;
+}
+
+.video-container .lite-play::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-width: 10px 0 10px 18px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.video-container .lite-btn {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.video-container.lite-active {
+  cursor: default;
 }
 
 /* --- LISTS --- */
@@ -1209,7 +1270,7 @@ pre code .num { color: #d19a66; }
   </div>
 
   <div class="video-container">
-    <iframe src="https://www.youtube.com/embed/B72C_k7ZJwc" allowfullscreen></iframe>
+    <img class="lite-thumb" src="https://img.youtube.com/vi/B72C_k7ZJwc/hqdefault.jpg" alt="Storage Hunter Simulator"><div class="lite-play"></div><button class="lite-btn" data-id="B72C_k7ZJwc" aria-label="Play video"></button>
   </div>
 
   <ul>
@@ -1381,7 +1442,7 @@ pre code .num { color: #d19a66; }
   </div>
 
   <div class="video-container">
-    <iframe src="https://www.youtube.com/embed/7-hZ6UnNhF4" allowfullscreen></iframe>
+    <img class="lite-thumb" src="https://img.youtube.com/vi/7-hZ6UnNhF4/hqdefault.jpg" alt="Chernobyl Liquidators"><div class="lite-play"></div><button class="lite-btn" data-id="7-hZ6UnNhF4" aria-label="Play video"></button>
   </div>
 
   <p><strong>Sole programmer during demo production</strong></p>
@@ -1392,7 +1453,7 @@ pre code .num { color: #d19a66; }
   <div class="system-block">
     <h4>Ladder System</h4>
     <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/Rb1ka_VMXrk" allowfullscreen></iframe>
+      <img class="lite-thumb" src="https://img.youtube.com/vi/Rb1ka_VMXrk/hqdefault.jpg" alt="Ladder System"><div class="lite-play"></div><button class="lite-btn" data-id="Rb1ka_VMXrk" aria-label="Play video"></button>
     </div>
     <p>Implemented ladder interaction system in first-person perspective:</p>
     <ul>
@@ -1405,7 +1466,7 @@ pre code .num { color: #d19a66; }
   <div class="system-block">
     <h4>Fire System</h4>
     <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/MyXa7wXaWFs" allowfullscreen></iframe>
+      <img class="lite-thumb" src="https://img.youtube.com/vi/MyXa7wXaWFs/hqdefault.jpg" alt="Fire System"><div class="lite-play"></div><button class="lite-btn" data-id="MyXa7wXaWFs" aria-label="Play video"></button>
     </div>
     <ul>
       <li>Implemented fire extinguishing system with resource-based gameplay (water management)</li>
@@ -1418,7 +1479,7 @@ pre code .num { color: #d19a66; }
   <div class="system-block">
     <h4>Cleaning System</h4>
     <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/YQavru8FuNM" allowfullscreen></iframe>
+      <img class="lite-thumb" src="https://img.youtube.com/vi/YQavru8FuNM/hqdefault.jpg" alt="Cleaning System"><div class="lite-play"></div><button class="lite-btn" data-id="YQavru8FuNM" aria-label="Play video"></button>
     </div>
     <ul>
       <li>Implemented cleaning tool using raycast-based interaction with distance-based area scaling</li>
@@ -1450,7 +1511,7 @@ pre code .num { color: #d19a66; }
   </div>
 
   <div class="video-container">
-    <iframe src="https://www.youtube.com/embed/wRCte4SoRP0" allowfullscreen></iframe>
+    <img class="lite-thumb" src="https://img.youtube.com/vi/wRCte4SoRP0/hqdefault.jpg" alt="Turbo Soccer VR"><div class="lite-play"></div><button class="lite-btn" data-id="wRCte4SoRP0" aria-label="Play video"></button>
   </div>
 
   <p>Commercial VR game released on Steam, focused on physics-based football gameplay and player interaction in virtual reality.</p>
@@ -1613,7 +1674,7 @@ pre code .num { color: #d19a66; }
   </div>
 
   <div class="video-container">
-    <iframe src="https://www.youtube.com/embed/iDz3vQRIf90" allowfullscreen></iframe>
+    <img class="lite-thumb" src="https://img.youtube.com/vi/iDz3vQRIf90/hqdefault.jpg" alt="Experimental Systems"><div class="lite-play"></div><button class="lite-btn" data-id="iDz3vQRIf90" aria-label="Play video"></button>
   </div>
 
   <p>Interactive multi-device system combining gameplay, networking, and physical effects.</p>
@@ -1653,13 +1714,13 @@ pre code .num { color: #d19a66; }
 
     <h3>Z Radar</h3>
     <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/AK84bkQcdeg" allowfullscreen></iframe>
+      <img class="lite-thumb" src="https://img.youtube.com/vi/AK84bkQcdeg/hqdefault.jpg" alt="Z Radar"><div class="lite-play"></div><button class="lite-btn" data-id="AK84bkQcdeg" aria-label="Play video"></button>
     </div>
     <p>Flagship application reaching over <strong>1 million downloads</strong> on Google Play.</p>
 
     <h3>Dragon Galaxy Warrior</h3>
     <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/vBd7f-AODh4" allowfullscreen></iframe>
+      <img class="lite-thumb" src="https://img.youtube.com/vi/vBd7f-AODh4/hqdefault.jpg" alt="Dragon Galaxy Warrior"><div class="lite-play"></div><button class="lite-btn" data-id="vBd7f-AODh4" aria-label="Play video"></button>
     </div>
     <p>Arcade space shooter built with <strong>LibGDX</strong> (cross-platform Java game framework), reaching <strong>500k+ downloads</strong> on Google Play.</p>
   </div></section>
@@ -1676,7 +1737,7 @@ pre code .num { color: #d19a66; }
     </div>
 
     <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/oqR7cDeXjhQ" allowfullscreen></iframe>
+      <img class="lite-thumb" src="https://img.youtube.com/vi/oqR7cDeXjhQ/hqdefault.jpg" alt="Pirate Multiplayer Game"><div class="lite-play"></div><button class="lite-btn" data-id="oqR7cDeXjhQ" aria-label="Play video"></button>
     </div>
 
     <p>Real-time multiplayer mobile game developed as an engineering thesis project using Photon Unity Networking (PUN). Focused on implementing networked gameplay systems, physics-based mechanics, and mobile controls.</p>
@@ -1770,11 +1831,17 @@ document.addEventListener('DOMContentLoaded', function() {
         p.classList.remove('active');
       });
 
-      // Stop any playing iframes (YouTube etc.) by resetting their src
-      document.querySelectorAll('.project-panel iframe').forEach(function(frame) {
-        var src = frame.getAttribute('src');
-        if (src) {
-          frame.setAttribute('src', src);
+      // Stop playing videos: remove iframes and restore thumbnails
+      document.querySelectorAll('.project-panel .video-container.lite-active').forEach(function(vc) {
+        var iframe = vc.querySelector('iframe');
+        if (iframe) {
+          var id = iframe.getAttribute('src').match(/embed\/([^?]+)/);
+          if (id) {
+            vc.innerHTML = '<img class="lite-thumb" src="https://img.youtube.com/vi/' + id[1] + '/hqdefault.jpg" alt="">' +
+              '<div class="lite-play"></div>' +
+              '<button class="lite-btn" data-id="' + id[1] + '" aria-label="Play video"></button>';
+          }
+          vc.classList.remove('lite-active');
         }
       });
 
@@ -1790,6 +1857,28 @@ document.addEventListener('DOMContentLoaded', function() {
         content.scrollTop = 0;
       }
     });
+  });
+
+  // Lite YouTube embed: click thumbnail to load iframe
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.lite-btn');
+    if (!btn) return;
+    var container = btn.closest('.video-container');
+    var id = btn.getAttribute('data-id');
+    if (!container || !id) return;
+    container.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1" allowfullscreen allow="autoplay"></iframe>';
+    container.classList.add('lite-active');
+  });
+
+  // Try loading maxresdefault; fall back to hqdefault
+  document.querySelectorAll('.lite-thumb').forEach(function(img) {
+    var hq = img.src;
+    var maxres = hq.replace('/hqdefault.jpg', '/maxresdefault.jpg');
+    var test = new Image();
+    test.onload = function() {
+      if (test.naturalWidth > 120) img.src = maxres;
+    };
+    test.src = maxres;
   });
 });
 </script>
